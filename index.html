@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<!-- saved from url=(0064)https://www.w3schools.com/html/tryit.asp?filename=tryhtml_editor -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Audgoodian Digest</title>
+
+<style>
+body {
+    font-family: Arial;
+    background: #0f1115;
+    color: #e6e6e6;
+    padding: 20px;
+}
+h1 { text-align: center; color: #4dd0e1; }
+
+.panel {
+    background: #1a1d24;
+    padding: 15px;
+    margin: 15px auto;
+    max-width: 900px;
+    border-radius: 10px;
+}
+
+input, button {
+    padding: 8px;
+    margin: 5px;
+}
+
+button {
+    cursor: pointer;
+    background: #4dd0e1;
+    border: none;
+    font-weight: bold;
+}
+
+.ticker {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    border-bottom: 1px solid #333;
+}
+
+.positive { color: #00e676; }
+.negative { color: #ff5252; }
+
+.news-item {
+    padding: 8px 0;
+    border-bottom: 1px solid #333;
+}
+a { color: #4dd0e1; }
+</style>
+</head>
+
+<body contenteditable="false">
+
+<h1>Audgoodian Digest</h1>
+
+<div class="panel">
+    <h2>Market Watch</h2>
+
+    <input id="tickerInput" placeholder="Add ticker (SPY, IAU, USO)">
+    <button onclick="addTicker()">Add</button>
+
+    <div id="tickers"><div class="ticker">
+            <span><b>SPY</b> : $116.82
+            <span class="positive">(0.06%)</span></span>
+            <button onclick="removeTicker(&#39;SPY&#39;)">X</button>
+        </div><div class="ticker">
+            <span><b>IAU</b> : $190.75
+            <span class="negative">(-0.78%)</span></span>
+            <button onclick="removeTicker(&#39;IAU&#39;)">X</button>
+        </div><div class="ticker">
+            <span><b>USO</b> : $241.97
+            <span class="negative">(-0.93%)</span></span>
+            <button onclick="removeTicker(&#39;USO&#39;)">X</button>
+        </div><div class="ticker">
+            <span><b>SPYM</b> : $50.85
+            <span class="negative">(-0.71%)</span></span>
+            <button onclick="removeTicker(&#39;SPYM&#39;)">X</button>
+        </div></div>
+</div>
+
+<div class="panel">
+    <h2>Market News (Fallback Mode)</h2>
+    <p>Live news disabled in local mode. Showing simulated headlines:</p>
+    <div id="news"><div class="news-item">Fed signals potential rate adjustments amid inflation data</div><div class="news-item">Oil markets fluctuate as global demand shifts</div><div class="news-item">Gold remains steady as investors seek safe assets</div><div class="news-item">S&amp;P 500 futures show mixed sentiment ahead of trading week</div><div class="news-item">Global economic outlook remains uncertain, analysts say</div></div>
+</div>
+
+<script>
+let tickers = ["SPY", "IAU", "USO"];
+
+function addTicker() {
+    let t = document.getElementById("tickerInput").value.toUpperCase().trim();
+    if (!t) return;
+    if (!tickers.includes(t)) tickers.push(t);
+    render();
+    document.getElementById("tickerInput").value = "";
+}
+
+function removeTicker(t) {
+    tickers = tickers.filter(x => x !== t);
+    render();
+}
+
+function render() {
+    const box = document.getElementById("tickers");
+    box.innerHTML = "";
+
+    tickers.forEach(t => {
+        const change = (Math.random() * 2 - 1).toFixed(2);
+        const cls = change >= 0 ? "positive" : "negative";
+
+        const div = document.createElement("div");
+        div.className = "ticker";
+
+        div.innerHTML = `
+            <span><b>${t}</b> : $${(Math.random()*200+50).toFixed(2)}
+            <span class="${cls}">(${change}%)</span></span>
+            <button onclick="removeTicker('${t}')">X</button>
+        `;
+
+        box.appendChild(div);
+    });
+}
+
+// fallback news so nothing breaks
+function loadNews() {
+    const headlines = [
+        "Fed signals potential rate adjustments amid inflation data",
+        "Oil markets fluctuate as global demand shifts",
+        "Gold remains steady as investors seek safe assets",
+        "S&P 500 futures show mixed sentiment ahead of trading week",
+        "Global economic outlook remains uncertain, analysts say"
+    ];
+
+    const box = document.getElementById("news");
+    box.innerHTML = "";
+
+    headlines.forEach(h => {
+        const div = document.createElement("div");
+        div.className = "news-item";
+        div.innerHTML = h;
+        box.appendChild(div);
+    });
+}
+
+render();
+loadNews();
+</script>
+
+
+</body></html>
