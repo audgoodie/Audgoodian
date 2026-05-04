@@ -15,11 +15,13 @@ body {
 h1 {
     text-align:center;
     color:#4dd0e1;
-    padding:15px;
+    padding:20px;
+    font-size:28px;
+    letter-spacing:1px;
 }
 
 .container {
-    max-width:700px;
+    max-width:900px;
     margin:auto;
     padding:10px;
 }
@@ -27,13 +29,19 @@ h1 {
 .card {
     background:#1a1d24;
     border:1px solid #222;
-    border-radius:10px;
-    padding:10px;
-    margin-bottom:10px;
+    border-radius:12px;
+    padding:12px;
+    margin-bottom:12px;
+}
+
+.card h3 {
+    margin:0 0 8px 0;
+    font-size:18px;
+    color:#e6e6e6;
 }
 
 .ticker {
-    height:120px;
+    height:90px;
 }
 </style>
 </head>
@@ -65,12 +73,12 @@ h1 {
 
 <script>
 
-// SPYM
+// SPYM (UPDATED)
 new TradingView.widget({
     container_id: "spym",
     symbol: "SPYM",
     width: "100%",
-    height: 120,
+    height: 90,
     theme: "dark",
     style: "1",
     hide_legend: true,
@@ -82,7 +90,7 @@ new TradingView.widget({
     container_id: "iau",
     symbol: "IAU",
     width: "100%",
-    height: 120,
+    height: 90,
     theme: "dark",
     style: "1",
     hide_legend: true,
@@ -94,7 +102,7 @@ new TradingView.widget({
     container_id: "uso",
     symbol: "USO",
     width: "100%",
-    height: 120,
+    height: 90,
     theme: "dark",
     style: "1",
     hide_legend: true,
