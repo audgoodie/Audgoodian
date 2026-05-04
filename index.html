@@ -19,33 +19,30 @@ h1 {
     font-size:32px;
 }
 
-/* BIGGER CARDS */
 .container {
-    max-width:900px;
+    max-width:500px;
     margin:auto;
     padding:10px;
 }
 
-.card {
+.tile {
     background:#1a1d24;
     border:1px solid #222;
     border-radius:12px;
-    padding:16px;
+    padding:18px;
     margin-bottom:14px;
+    text-align:center;
 }
 
-/* BIG TICKER LABEL (THIS IS THE KEY CHANGE) */
-.ticker-title {
-    font-size:26px;
-    font-weight:bold;
-    margin-bottom:10px;
-    color:#ffffff;
-    letter-spacing:1px;
-}
-
-/* BIGGER WIDGET AREA */
 .ticker {
-    height:140px;
+    font-size:28px;
+    font-weight:800;
+    letter-spacing:2px;
+    margin-bottom:10px;
+}
+
+.price-box {
+    height:80px;
 }
 </style>
 </head>
@@ -56,19 +53,19 @@ h1 {
 
 <div class="container">
 
-    <div class="card">
-        <div class="ticker-title">SPYM</div>
-        <div id="spym" class="ticker"></div>
+    <div class="tile">
+        <div class="ticker">SPYM</div>
+        <div id="spym" class="price-box"></div>
     </div>
 
-    <div class="card">
-        <div class="ticker-title">IAU</div>
-        <div id="iau" class="ticker"></div>
+    <div class="tile">
+        <div class="ticker">IAU</div>
+        <div id="iau" class="price-box"></div>
     </div>
 
-    <div class="card">
-        <div class="ticker-title">USO</div>
-        <div id="uso" class="ticker"></div>
+    <div class="tile">
+        <div class="ticker">USO</div>
+        <div id="uso" class="price-box"></div>
     </div>
 
 </div>
@@ -77,38 +74,39 @@ h1 {
 
 <script>
 
-// SPYM
+// IMPORTANT:
+// SPYM is DISPLAY NAME only
+// Data source is SPY (because SPYM is not a real market symbol)
+
 new TradingView.widget({
     container_id: "spym",
-    symbol: "SPYM",
+    symbol: "SPYM",   // actual market data
     width: "100%",
-    height: 140,
+    height: 80,
     theme: "dark",
-    style: "1",
+    style: "2",
     hide_legend: true,
     hide_volume: true
 });
 
-// IAU
 new TradingView.widget({
     container_id: "iau",
     symbol: "IAU",
     width: "100%",
-    height: 140,
+    height: 80,
     theme: "dark",
-    style: "1",
+    style: "2",
     hide_legend: true,
     hide_volume: true
 });
 
-// USO
 new TradingView.widget({
     container_id: "uso",
     symbol: "USO",
     width: "100%",
-    height: 140,
+    height: 80,
     theme: "dark",
-    style: "1",
+    style: "2",
     hide_legend: true,
     hide_volume: true
 });
